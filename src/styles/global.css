@@ -1,3 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-hospital-primary: #A6192E;   /* Thai Red Cross / Chula deep medical crimson */
+  --color-hospital-accent: #DE5C8E;    /* Chula Rose / Pink identity */
+  --color-hospital-dark: #231F20;      /* Official charcoal dark slate */
+  --color-hospital-surface: #FBFBFC;   /* Crisp institutional off-white */
+  --color-hospital-border: #E5E7EB;    /* Clean divider borders */
+}

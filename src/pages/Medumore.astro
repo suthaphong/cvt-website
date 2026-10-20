@@ -1,0 +1,99 @@
+---
+const logoUrl = "https://www.medumore.org/_next/image?url=%2Fassets%2Fimages%2Ffooter-logo.png&w=3840&q=75";
+const courseUrl = "https://www.medumore.org/course/Essential-procedures-medical-students-ICD";
+import { Image } from 'astro:assets';
+import icdCourseBanner from '../assets/Image.png';
+---
+<section id="medumore" class="py-12 border-b border-slate-200">
+  <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 rounded-2xl p-6 md:p-8 text-white shadow-sm border border-slate-700">
+    <!-- Header Block with Logo -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-700/60">
+      <div class="flex items-center gap-4">
+        <a href="https://www.medumore.org" target="_blank" rel="noopener noreferrer" class="bg-white/10 hover:bg-white/20 p-2.5 rounded-xl border border-white/10 transition backdrop-blur-sm">
+          <img 
+            src={logoUrl} 
+            alt="MDCU MEDUMORE Logo" 
+            class="h-9 w-auto object-contain brightness-0 invert" 
+            loading="lazy"
+          />
+        </a>
+        <div>
+          <h2 class="text-xl md:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+            MDCU MEDUMORE
+            <span class="text-[10px] font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full uppercase tracking-wider">
+              E-Learning
+            </span>
+          </h2>
+          <p class="text-xs text-slate-300">คณะแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย (Lifelong Learning Platform)</p>
+        </div>
+      </div>
+
+      <a 
+        href={courseUrl} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="text-xs font-semibold text-rose-300 hover:text-white transition inline-flex items-center gap-1.5"
+      >
+        <span>View on MedUMore</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- Course Banner with Overlay -->
+    <div class="space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Featured Course</span>
+        <span class="text-xs text-rose-300 font-medium">Cardiovascular & Thoracic Surgery</span>
+      </div>
+      
+      <a 
+        href={courseUrl} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="group block relative rounded-xl overflow-hidden border border-slate-700 hover:border-[#A6192E]/60 transition-all duration-300 shadow-lg bg-slate-950"
+      >
+        <div class="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-slate-900">
+          <!-- Permanent Local Image via Astro <Image /> -->
+          <Image 
+            src={icdCourseBanner} 
+            alt="Essential procedures for medical students: EP.Intercostal drainage (ICD)" 
+            class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500 opacity-90"
+          />
+
+          <!-- Gradient Shadow Layer -->
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+
+          <!-- Overlay Content -->
+          <div class="absolute inset-0 flex flex-col justify-end p-6 md:p-8 space-y-2">
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-rose-300 uppercase tracking-wider">
+              <span class="w-2 h-2 rounded-full bg-[#A6192E] animate-pulse"></span>
+              Essential Procedures for Medical Students
+            </span>
+
+            <h3 class="text-lg md:text-2xl font-extrabold text-white leading-snug drop-shadow-md">
+              EP. Intercostal drainage (ICD)
+            </h3>
+
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+              <p class="text-sm md:text-base font-medium text-slate-200 flex items-center gap-2">
+                <svg class="w-4 h-4 text-rose-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
+                <span>วิทยากร: อ. นพ.เผด็จ ธนังธีรพงษ์</span>
+              </p>
+
+              <span class="bg-[#A6192E] group-hover:bg-[#851324] text-white text-xs font-semibold px-4 py-2 rounded-lg shadow-md transition inline-flex items-center gap-1.5">
+                <span>เข้าสู่บทเรียน (Enroll)</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
