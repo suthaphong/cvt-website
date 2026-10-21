@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { siteConfig } from '../config/site';
 import KCMH1 from '../pages/KCMH1.astro';
 import Medumore from '../pages/Medumore.astro';
+import { allMembers } from '../data/fellowship';
 
 const { hero, programs, theme } = siteConfig;
 ---
@@ -144,6 +145,37 @@ const { hero, programs, theme } = siteConfig;
 
     <!-- MDCU MEDUMORE Segment -->
     <Medumore />
+
+    <!-- Resident & Fellowship Program Teaser Segment -->
+    <section id="fellowship" class="py-6 border-t border-slate-200">
+      <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 rounded-2xl p-6 md:p-8 text-white shadow-sm border border-slate-700 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2">
+            <span class="bg-[#A6192E] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              Academic Year 2569
+            </span>
+            <span class="text-xs text-rose-300 font-medium">Training & Education</span>
+          </div>
+          <h2 class="text-xl md:text-2xl font-bold tracking-tight text-white">
+            ทำเนียบแพทย์ประจำบ้าน แพทย์ประจำบ้านต่อยอด และศิษย์เก่า
+          </h2>
+          <p class="text-xs md:text-sm text-slate-300 max-w-2xl leading-relaxed">
+            ข้อมูลแพทย์ประจำบ้านชั้นปีที่ 3, 4 และ 5 (Chief Resident), แพทย์ประจำบ้านต่อยอด (Fellow) และทำเนียบศิษย์เก่าสาขาวิชาศัลยศาสตร์ทรวงอก โรงพยาบาลจุฬาลงกรณ์
+          </p>
+        </div>
+
+        <a 
+          href="/fellowship" 
+          style={`background-color: ${theme.primary};`}
+          class="shrink-0 text-white text-xs sm:text-sm font-semibold px-5 py-3 rounded-xl hover:opacity-90 transition shadow-sm inline-flex items-center gap-2 group"
+        >
+          <span>ดูทำเนียบแพทย์ทั้งหมด ({allMembers.length})</span>
+          <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </section>
 
     <!-- KCMH Journal Archive Segment -->
     <section id="kcmh-section" class="py-6 border-t border-slate-200">

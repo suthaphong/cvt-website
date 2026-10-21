@@ -19,10 +19,10 @@ export const siteConfig = {
   },
   navLinks: [
     { label: "Home", href: "/" },
-    { label: "Services", href: "#services" },
-    { label: "Faculty & Surgeons", href: "#faculty" },
-    { label: "Resident & Fellow", href: "#fellowship" },
-    { label: "Research", href: "#research" }
+    { label: "Services", href: "/#services" },
+    { label: "Faculty & Surgeons", href: "/#faculty" },
+    { label: "Resident & Fellow", href: "/fellowship" },
+    { label: "Research", href: "/#research" }
   ],
 
   // --- Hero Section Data ---
