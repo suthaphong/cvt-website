@@ -21,15 +21,19 @@ const navLinks = siteConfig?.navLinks || [];
   <body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen antialiased">
     
     <!-- Top Identity Ribbon -->
-    <div style={`background-color: ${theme.primary};`} class="text-white text-xs py-2 px-4 shadow-sm">
+    <div style={`background-color: ${theme.primary};`} class="text-white text-xs py-1.5 sm:py-2 px-4 shadow-sm">
       <div class="max-w-6xl mx-auto flex justify-between items-center">
-        <span class="font-medium tracking-wide">
+        <span class="font-medium tracking-wide hidden sm:inline">
           {siteConfig?.deptNameEn} | {siteConfig?.hospitalEn}
+        </span>
+        <span class="font-medium tracking-wide sm:hidden text-[10px]">
+          CVT Surgery • KCMH
         </span>
         <div class="flex items-center gap-4">
           <a href={hotline.link} class="hover:underline flex items-center gap-1.5 font-semibold text-white">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            {hotline.label}: {hotline.phone}
+            <span class="hidden sm:inline">{hotline.label}: {hotline.phone}</span>
+            <span class="sm:hidden text-[10px]">{hotline.phone}</span>
           </a>
         </div>
       </div>
@@ -37,22 +41,22 @@ const navLinks = siteConfig?.navLinks || [];
 
     <!-- Main Navigation Bar -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-      <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
+      <div class="max-w-6xl mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
         
         <!-- Brand & Logo Block -->
-        <a href="/" class="flex items-center gap-3">
-        <Image src={logoImg} alt="CVT Chula Logo" class="h-12 w-auto object-contain" loading="eager" />
+        <a href="/" class="flex items-center gap-2 sm:gap-3 shrink-0">
+          <Image src={logoImg} alt="CVT Chula Logo" class="h-9 sm:h-12 w-auto object-contain" loading="eager" />
           <div class="flex flex-col">
-            <span class="font-black text-xl text-slate-900 tracking-tight leading-tight">
+            <span class="font-black text-lg sm:text-xl text-slate-900 tracking-tight leading-tight">
               CVT <span style={`color: ${theme.primary};`}>CHULA</span>
             </span>
-            <span class="text-xs text-slate-500 font-medium">
+            <span class="text-[10px] sm:text-xs text-slate-500 font-medium hidden sm:block">
               {siteConfig?.subTitle || siteConfig?.hospitalEn}
             </span>
           </div>
         </a>
         
-      <!-- Dynamic Menu Tabs -->
+        <!-- Desktop Menu Tabs -->
         <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-700">
           {navLinks.map((link) => (
             <a 
@@ -71,8 +75,46 @@ const navLinks = siteConfig?.navLinks || [];
           </a>
         </nav>
 
+        <!-- Mobile Hamburger Button -->
+        <button 
+          id="mobile-menu-btn" 
+          type="button" 
+          class="md:hidden flex flex-col items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-100 transition focus:outline-none"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <span id="hamburger-top" class="block w-5 h-0.5 bg-slate-700 transition-all duration-300 ease-out"></span>
+          <span id="hamburger-mid" class="block w-5 h-0.5 bg-slate-700 mt-1.5 transition-all duration-300 ease-out"></span>
+          <span id="hamburger-bot" class="block w-5 h-0.5 bg-slate-700 mt-1.5 transition-all duration-300 ease-out"></span>
+        </button>
         
       </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <nav 
+        id="mobile-menu" 
+        class="md:hidden hidden border-t border-slate-100 bg-white shadow-lg"
+      >
+        <div class="max-w-6xl mx-auto px-4 py-4 space-y-1">
+          {navLinks.map((link) => (
+            <a 
+              href={link.href} 
+              class="mobile-nav-link block px-4 py-3 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#A6192E] transition"
+            >
+              {link.label}
+            </a>
+          ))}
+          <div class="pt-2 border-t border-slate-100 mt-2">
+            <a 
+              href="#contact" 
+              style={`background-color: ${theme.primary};`}
+              class="mobile-nav-link block text-center text-white px-4 py-3 rounded-lg text-sm font-semibold transition hover:opacity-90 shadow-sm"
+            >
+              Contact
+            </a>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <!-- Main Content -->
@@ -81,13 +123,60 @@ const navLinks = siteConfig?.navLinks || [];
     </main>
 
     <!-- Footer -->
-    <footer style={`background-color: ${theme.dark};`} class="text-slate-400 py-10 text-xs border-t border-slate-800">
+    <footer style={`background-color: ${theme.dark};`} class="text-slate-400 py-8 sm:py-10 text-xs border-t border-slate-800">
       <div class="max-w-6xl mx-auto px-4 text-center space-y-2">
-        <p class="text-white font-medium">{siteConfig?.deptNameTh} {siteConfig?.hospitalTh}</p>
-        <p>{siteConfig?.deptNameEn} &bull; {siteConfig?.hospitalEn}</p>
+        <p class="text-white font-medium text-sm sm:text-base">{siteConfig?.deptNameTh} {siteConfig?.hospitalTh}</p>
+        <p class="text-[11px] sm:text-xs">{siteConfig?.deptNameEn} &bull; {siteConfig?.hospitalEn}</p>
         <p class="pt-4 text-slate-500">&copy; {new Date().getFullYear()} All rights reserved.</p>
       </div>
     </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script is:inline>
+      (() => {
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const top = document.getElementById('hamburger-top');
+        const mid = document.getElementById('hamburger-mid');
+        const bot = document.getElementById('hamburger-bot');
+
+        if (!btn || !menu) return;
+
+        let isOpen = false;
+
+        btn.addEventListener('click', () => {
+          isOpen = !isOpen;
+          btn.setAttribute('aria-expanded', String(isOpen));
+
+          if (isOpen) {
+            menu.classList.remove('hidden');
+            // Morph hamburger to X
+            if (top) { top.style.transform = 'translateY(8px) rotate(45deg)'; }
+            if (mid) { mid.style.opacity = '0'; }
+            if (bot) { bot.style.transform = 'translateY(-8px) rotate(-45deg)'; }
+          } else {
+            menu.classList.add('hidden');
+            // Restore hamburger
+            if (top) { top.style.transform = ''; }
+            if (mid) { mid.style.opacity = '1'; }
+            if (bot) { bot.style.transform = ''; }
+          }
+        });
+
+        // Close menu when a link is tapped
+        const links = menu.querySelectorAll('.mobile-nav-link');
+        links.forEach(link => {
+          link.addEventListener('click', () => {
+            isOpen = false;
+            menu.classList.add('hidden');
+            btn.setAttribute('aria-expanded', 'false');
+            if (top) { top.style.transform = ''; }
+            if (mid) { mid.style.opacity = '1'; }
+            if (bot) { bot.style.transform = ''; }
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
 

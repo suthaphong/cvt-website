@@ -11,11 +11,11 @@ const { hero, programs, theme } = siteConfig;
   <!-- ============================================================ -->
   <!-- HERO & TOP BANNER WITH SCROLL-MERGE BACKGROUND EFFECT        -->
   <!-- ============================================================ -->
-  <section id="hero-scroll-container" class="relative w-full bg-slate-50 pb-24 md:pb-36">
+  <section id="hero-scroll-container" class="relative w-full bg-slate-50 pb-36 md:pb-48">
     <!-- Sticky Banner Layer: Sits directly under the navigation bar -->
     <div 
       id="hero-banner-sticky" 
-      class="sticky top-20 z-0 w-full h-[340px] sm:h-[420px] md:h-[500px] overflow-hidden bg-slate-950 shadow-sm"
+      class="sticky top-16 md:top-20 z-0 w-full h-[300px] sm:h-[380px] md:h-[500px] overflow-hidden bg-slate-950 shadow-sm"
     >
       <!-- Surgical Photo -->
       <img 
@@ -50,7 +50,7 @@ const { hero, programs, theme } = siteConfig;
     </div>
 
     <!-- Hero Content Track: Spreads out horizontally across the container (unboxed) -->
-    <div id="hero-content-track" class="relative z-10 max-w-6xl mx-auto px-4 mt-6 md:mt-8">
+    <div id="hero-content-track" class="relative z-10 max-w-6xl mx-auto px-4 mt-6 md:mt-8 pb-8 md:pb-12">
       <div 
         id="hero-content-wrap"
         class="max-w-4xl space-y-4 transition-all duration-500 ease-out"
@@ -67,7 +67,7 @@ const { hero, programs, theme } = siteConfig;
         <!-- Hero Title: Spread out horizontally across the banner -->
         <h1 
           id="hero-title"
-          class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-slate-900 transition-colors duration-300"
+          class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-slate-900 transition-colors duration-300"
         >
           {hero.title}
         </h1>
@@ -75,17 +75,17 @@ const { hero, programs, theme } = siteConfig;
         <!-- Hero Description: Spread out horizontally -->
         <p 
           id="hero-desc"
-          class="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed transition-colors duration-300"
+          class="text-sm sm:text-base md:text-lg text-slate-600 max-w-3xl leading-relaxed transition-colors duration-300"
         >
           {hero.description}
         </p>
 
         <!-- Action Buttons -->
-        <div class="flex flex-wrap items-center gap-3 pt-4">
+        <div class="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 pt-4">
           <a 
             href={hero.primaryBtn.href}
             style={`background-color: ${theme.primary};`}
-            class="text-white px-6 py-3 rounded-xl text-sm font-semibold hover:opacity-95 transition shadow-md shadow-[#A6192E]/25 inline-flex items-center gap-2 group"
+            class="text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl text-sm font-semibold hover:opacity-95 transition shadow-md shadow-[#A6192E]/25 inline-flex items-center gap-2 group"
           >
             <span>{hero.primaryBtn.label}</span>
             <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -96,7 +96,7 @@ const { hero, programs, theme } = siteConfig;
           <a 
             href={hero.secondaryBtn.href}
             id="hero-secondary-btn"
-            class="bg-white border border-slate-300 text-slate-700 px-6 py-3 rounded-xl text-sm font-semibold hover:bg-slate-50 transition shadow-sm inline-flex items-center gap-2"
+            class="bg-white border border-slate-300 text-slate-700 px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl text-sm font-semibold hover:bg-slate-50 transition shadow-sm inline-flex items-center gap-2"
           >
             <span>{hero.secondaryBtn.label}</span>
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
