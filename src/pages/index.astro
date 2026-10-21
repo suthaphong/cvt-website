@@ -8,71 +8,247 @@ const { hero, programs, theme } = siteConfig;
 ---
 
 <Layout title={`${siteConfig.deptNameEn} | ${siteConfig.hospitalEn}`}>
-  <!-- Hero Section -->
-  <section class="py-12 border-b border-slate-200">
-    <div class="max-w-3xl space-y-4">
-      <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-        {hero.title}
-      </h1>
-      <p class="text-base text-slate-600 leading-relaxed">
-        {hero.description}
-      </p>
-      <div class="flex items-center gap-3 pt-2">
-        <a 
-          href={hero.primaryBtn.href}
-          style={`background-color: ${theme.primary};`}
-          class="text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:opacity-90 transition shadow-sm"
-        >
-          {hero.primaryBtn.label}
-        </a>
-        <a 
-          href={hero.secondaryBtn.href}
-          class="bg-white border border-slate-300 text-slate-700 px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-slate-50 transition"
-        >
-          {hero.secondaryBtn.label}
-        </a>
+  <!-- ============================================================ -->
+  <!-- HERO & TOP BANNER WITH SCROLL-MERGE BACKGROUND EFFECT        -->
+  <!-- ============================================================ -->
+  <section id="hero-scroll-container" class="relative w-full bg-slate-50 pb-24 md:pb-36">
+    <!-- Sticky Banner Layer: Sits directly under the navigation bar -->
+    <div 
+      id="hero-banner-sticky" 
+      class="sticky top-20 z-0 w-full h-[340px] sm:h-[420px] md:h-[500px] overflow-hidden bg-slate-950 shadow-sm"
+    >
+      <!-- Surgical Photo -->
+      <img 
+        src="https://chula-surgery.com/wp-content/uploads/2021/10/KOB15530-1-1024x683-1.jpg" 
+        alt="Chula CVT Surgery Faculty and Surgeons" 
+        id="hero-banner-img"
+        referrerpolicy="no-referrer"
+        class="w-full h-full object-cover object-top sm:object-center transition-transform duration-700 ease-out will-change-transform"
+        loading="eager"
+      />
+
+      <!-- Full-bleed shadow backdrop overlay: darkens & bleeds over photo on scroll for text legibility -->
+      <div 
+        id="hero-banner-scrim" 
+        class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-transparent opacity-25 transition-opacity duration-300 pointer-events-none"
+      ></div>
+      <div 
+        id="hero-banner-ambient" 
+        class="absolute inset-0 bg-slate-950/20 opacity-0 transition-opacity duration-300 pointer-events-none"
+      ></div>
+
+      <!-- Initial Banner Tag: Shows origin of the photo -->
+      <div 
+        id="hero-banner-tag" 
+        class="absolute top-4 left-4 md:left-8 z-10 transition-all duration-300 pointer-events-none"
+      >
+        <span class="inline-flex items-center gap-2 bg-black/60 backdrop-blur-md text-white/95 text-xs font-medium px-3.5 py-1.5 rounded-full border border-white/20 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-[#A6192E] animate-pulse"></span>
+          Division of Cardiovascular & Thoracic Surgery • KCMH
+        </span>
       </div>
     </div>
-  </section>
 
- <!-- Clinical Programs Section -->
-  <section id="services" class="py-12">
-    <div class="flex items-center justify-between mb-8">
-      <div>
-        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Clinical Programs & Subspecialties</h2>
-        <p class="text-sm text-slate-500 mt-1">Tertiary cardiovascular and thoracic surgical services</p>
-      </div>
-    </div>
-
-    <!-- 4-Column Responsive Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {programs.map((item) => (
-        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
-          <div>
-            <h3 
-              style={`color: ${theme.primary};`}
-              class="text-base font-bold mb-3 tracking-tight leading-snug"
-            >
-              {item.title}
-            </h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              {item.description}
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center text-xs font-semibold" style={`color: ${theme.primary};`}>
-            <span>Learn more &rarr;</span>
-          </div>
+    <!-- Hero Content Track: Spreads out horizontally across the container (unboxed) -->
+    <div id="hero-content-track" class="relative z-10 max-w-6xl mx-auto px-4 mt-6 md:mt-8">
+      <div 
+        id="hero-content-wrap"
+        class="max-w-4xl space-y-4 transition-all duration-500 ease-out"
+      >
+        <!-- Center of Excellence Badge -->
+        <div 
+          id="hero-badge"
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-slate-200/80 text-slate-800 transition-colors duration-300"
+        >
+          <span class="w-2 h-2 rounded-full bg-[#A6192E]"></span>
+          <span>Center of Surgical Excellence</span>
         </div>
-      ))}
+
+        <!-- Hero Title: Spread out horizontally across the banner -->
+        <h1 
+          id="hero-title"
+          class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-slate-900 transition-colors duration-300"
+        >
+          {hero.title}
+        </h1>
+
+        <!-- Hero Description: Spread out horizontally -->
+        <p 
+          id="hero-desc"
+          class="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed transition-colors duration-300"
+        >
+          {hero.description}
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap items-center gap-3 pt-4">
+          <a 
+            href={hero.primaryBtn.href}
+            style={`background-color: ${theme.primary};`}
+            class="text-white px-6 py-3 rounded-xl text-sm font-semibold hover:opacity-95 transition shadow-md shadow-[#A6192E]/25 inline-flex items-center gap-2 group"
+          >
+            <span>{hero.primaryBtn.label}</span>
+            <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+
+          <a 
+            href={hero.secondaryBtn.href}
+            id="hero-secondary-btn"
+            class="bg-white border border-slate-300 text-slate-700 px-6 py-3 rounded-xl text-sm font-semibold hover:bg-slate-50 transition shadow-sm inline-flex items-center gap-2"
+          >
+            <span>{hero.secondaryBtn.label}</span>
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- ============================================================ -->
+  <!-- MAIN CONTENT CONTAINER (Programs, MedUMore, KCMH)            -->
+  <!-- ============================================================ -->
+  <div class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+    <!-- Clinical Programs Section -->
+    <section id="services" class="py-6">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Clinical Programs & Subspecialties</h2>
+          <p class="text-sm text-slate-500 mt-1">Tertiary cardiovascular and thoracic surgical services</p>
+        </div>
+      </div>
+
+      <!-- 4-Column Responsive Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {programs.map((item) => (
+          <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div>
+              <h3 
+                style={`color: ${theme.primary};`}
+                class="text-base font-bold mb-3 tracking-tight leading-snug"
+              >
+                {item.title}
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center text-xs font-semibold" style={`color: ${theme.primary};`}>
+              <span>Learn more &rarr;</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
 
     <!-- MDCU MEDUMORE Segment -->
-  <section id="medumore" class="py-12 border-b border-slate-200"></section>
-  <Medumore />
-  <section></section>
+    <Medumore />
 
-  <section id="kcmh-section" class="py-12 border-b border-slate-200">
-    <KCMH1 />
-  </section>
+    <!-- KCMH Journal Archive Segment -->
+    <section id="kcmh-section" class="py-6 border-t border-slate-200">
+      <KCMH1 />
+    </section>
+  </div>
+
+  <!-- Interactive Scroll-Merge Controller -->
+  <script is:inline>
+    (() => {
+      const container = document.getElementById('hero-scroll-container');
+      const scrim = document.getElementById('hero-banner-scrim');
+      const ambient = document.getElementById('hero-banner-ambient');
+      const tag = document.getElementById('hero-banner-tag');
+      const title = document.getElementById('hero-title');
+      const desc = document.getElementById('hero-desc');
+      const badge = document.getElementById('hero-badge');
+      const secBtn = document.getElementById('hero-secondary-btn');
+      const bannerImg = document.getElementById('hero-banner-img');
+
+      if (!container || !title) return;
+
+      let isMerged = false;
+      let ticking = false;
+
+      function updateHeroMerge() {
+        const rect = container.getBoundingClientRect();
+        // How far we have scrolled into the hero container
+        const scrollDistance = -rect.top;
+        // Merge threshold in pixels
+        const threshold = 160;
+        const progress = Math.min(1, Math.max(0, scrollDistance / threshold));
+
+        // 1. Darken the image bled scrim progressively to preserve contrast
+        if (scrim) {
+          scrim.style.opacity = (0.25 + 0.65 * progress).toFixed(2);
+        }
+        if (ambient) {
+          ambient.style.opacity = (0.35 * progress).toFixed(2);
+        }
+
+        // 2. Subtle zoom effect on the surgical photo during merge
+        if (bannerImg) {
+          bannerImg.style.transform = `scale(${(1 + 0.04 * progress).toFixed(3)})`;
+        }
+
+        // 3. Fade out the small banner tag as text merges
+        if (tag) {
+          tag.style.opacity = Math.max(0, 1 - progress * 1.8).toFixed(2);
+        }
+
+        // 4. Switch text & elements to high-contrast white over the dark bled overlay
+        if (progress >= 0.35 && !isMerged) {
+          isMerged = true;
+
+          if (title) {
+            title.classList.remove('text-slate-900');
+            title.classList.add('text-white', 'drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]');
+          }
+          if (desc) {
+            desc.classList.remove('text-slate-600');
+            desc.classList.add('text-slate-200', 'drop-shadow-[0_1px_6px_rgba(0,0,0,0.85)]');
+          }
+          if (badge) {
+            badge.classList.remove('bg-slate-200/80', 'text-slate-800');
+            badge.classList.add('bg-rose-950/70', 'text-rose-200', 'border', 'border-rose-400/30', 'backdrop-blur-sm');
+          }
+          if (secBtn) {
+            secBtn.classList.remove('bg-white', 'border-slate-300', 'text-slate-700', 'hover:bg-slate-50');
+            secBtn.classList.add('bg-white/15', 'border-white/30', 'text-white', 'hover:bg-white/25', 'backdrop-blur-sm');
+          }
+        } else if (progress < 0.35 && isMerged) {
+          isMerged = false;
+
+          if (title) {
+            title.classList.add('text-slate-900');
+            title.classList.remove('text-white', 'drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]');
+          }
+          if (desc) {
+            desc.classList.add('text-slate-600');
+            desc.classList.remove('text-slate-200', 'drop-shadow-[0_1px_6px_rgba(0,0,0,0.85)]');
+          }
+          if (badge) {
+            badge.classList.add('bg-slate-200/80', 'text-slate-800');
+            badge.classList.remove('bg-rose-950/70', 'text-rose-200', 'border', 'border-rose-400/30', 'backdrop-blur-sm');
+          }
+          if (secBtn) {
+            secBtn.classList.add('bg-white', 'border-slate-300', 'text-slate-700', 'hover:bg-slate-50');
+            secBtn.classList.remove('bg-white/15', 'border-white/30', 'text-white', 'hover:bg-white/25', 'backdrop-blur-sm');
+          }
+        }
+
+        ticking = false;
+      }
+
+      function requestTick() {
+        if (!ticking) {
+          window.requestAnimationFrame(updateHeroMerge);
+          ticking = true;
+        }
+      }
+
+      window.addEventListener('scroll', requestTick, { passive: true });
+      window.addEventListener('resize', requestTick, { passive: true });
+      updateHeroMerge();
+    })();
+  </script>
 </Layout>

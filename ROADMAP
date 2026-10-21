@@ -1,0 +1,13 @@
+# CVT Website Roadmap
+- [x] Phase 1: Local Setup & Git initialization
+  - [x] Node.js, Astro, Tailwind, Git remote pushed
+- [ ] Phase 2: Core Architecture & Hospital Styling
+  - [ ] 2.1 Set institutional color palette in `tailwind.config.mjs`
+  - [ ] 2.2 Reusable Navbar with hospital branding & referral hotlines
+  - [ ] 2.3 Modular Doctor Card component (`DoctorCard.astro`)
+  - [ ] 2.4 Clinical Division grid (Adult Cardiac, Thoracic, Aorta)
+- [ ] Phase 3: Content Automation (Markdown/JSON)
+  - [ ] 3.1 Faculty bios collection
+  - [ ] 3.2 Referral & OPD clinic schedule tables
+- [ ] Phase 4: Free Automated CI/CD Hosting (Vercel/Cloudflare Pages)
+- [ ] Phase 5: Custom Domain Registration & DNS Mapping

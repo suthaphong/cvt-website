@@ -141,6 +141,7 @@ const journals = [
               src={item.cover} 
               alt={item.title} 
               loading="lazy" 
+              referrerpolicy="no-referrer"
               class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
             />
           </div>
@@ -159,10 +160,12 @@ const journals = [
   <!-- ============================================================ -->
   <div class="relative w-full rounded-xl overflow-hidden shadow-sm border border-slate-200 bg-slate-900 text-white">
     <img 
-      src="/images/hero-bg.jpg" 
+      src="https://chula-surgery.com/wp-content/uploads/2021/10/KOB15530-1-1024x683-1.jpg" 
       alt="KCMH Facility" 
+      loading="lazy"
+      referrerpolicy="no-referrer"
       class="absolute inset-0 w-full h-full object-cover opacity-25"
-      onerror="this.style.display='none'"
+      onerror="this.onerror=null; this.src='/images/hero-bg.jpg';"
     />
     <div class="relative z-10 px-6 py-5 md:py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
       <div class="space-y-1">
