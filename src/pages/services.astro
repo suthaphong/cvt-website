@@ -1,0 +1,308 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config/site';
+import { clinicalServices, contactInfo } from '../data/department';
+
+const { programs, theme } = siteConfig;
+---
+
+<Layout title={`Services & Clinics | ${siteConfig.deptNameEn}`}>
+  <div class="bg-slate-50 min-h-screen pb-20">
+    
+    <!-- Institutional Page Header Banner -->
+    <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-white border-b border-slate-800">
+      <div class="max-w-6xl mx-auto px-4 py-12 md:py-16">
+        
+        <!-- Breadcrumb & Badges -->
+        <div class="flex flex-wrap items-center gap-2.5 text-xs text-slate-400 mb-4">
+          <a href="/" class="hover:text-white transition">Home</a>
+          <span>&rsaquo;</span>
+          <span class="text-white font-medium">Services & Clinics</span>
+          <span class="text-slate-600">&bull;</span>
+          <span class="bg-[#A6192E] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+            บริการทางการแพทย์
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
+          การบริการและคลินิกผู้ป่วยนอก
+        </h1>
+        <p class="text-base sm:text-lg text-rose-300 font-semibold mt-1">
+          Clinical Programs, Outpatient Surgical Clinics & Inpatient Care
+        </p>
+
+        <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-3xl leading-relaxed">
+          ให้บริการตรวจวินิจฉัย ผ่าตัดรักษา และดูแลผู้ป่วยวิกฤตโรคหัวใจ หลอดเลือดแดงใหญ่ และทรวงอกระดับตติยภูมิชั้นสูง 
+          ณ อาคารจักรีทศมรามาธิบดินทร์ ชั้น 6 (คลินิกผู้ป่วยนอก) และ อาคาร สก. ชั้น 4 (สำนักงานสาขาวิชา) โรงพยาบาลจุฬาลงกรณ์ สภากาชาดไทย
+        </p>
+
+      </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="max-w-6xl mx-auto px-4 pt-10 space-y-16">
+      
+      <!-- ============================================================ -->
+      <!-- SECTION 1: OPD CLINIC DETAILS (คลินิกผู้ป่วยนอก CVT)          -->
+      <!-- ============================================================ -->
+      <section id="opd" class="scroll-mt-24">
+        <div class="space-y-2 mb-6">
+          <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full text-xs font-bold text-emerald-800">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Outpatient Surgical Clinic &bull; อาคารจักรีทศมรามาธิบดินทร์ ชั้น 6</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+            คลินิกผู้ป่วยนอกศัลยกรรมทรวงอก (OPD CVT)
+          </h2>
+          <p class="text-sm text-slate-600 max-w-3xl leading-relaxed">
+            ให้บริการตรวจประเมินก่อนผ่าตัด ให้คำปรึกษาการรักษาโรคหัวใจและทรวงอก และติดตามอาการหลังผ่าตัด
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Main OPD Details Card -->
+          <div class="lg:col-span-8 bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+            <div class="flex items-start gap-4 pb-6 border-b border-slate-100">
+              <div class="w-12 h-12 rounded-2xl bg-rose-50 text-[#A6192E] flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900">
+                  สถานที่ตรวจ OPD: อาคารจักรีทศมรามาธิบดินทร์ ชั้น 6
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                  โรงพยาบาลจุฬาลงกรณ์ สภากาชาดไทย (1873 ถนนพระราม 4 แขวงปทุมวัน เขตปทุมวัน กรุงเทพฯ 10330)
+                </p>
+                <div class="mt-2 text-xs text-slate-600 flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#A6192E]"></span>
+                  <span>สำนักงานสาขาวิชา: <strong>อาคาร สก. ชั้น 4</strong> (โทร. 02-256-4644)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Schedule Alert Box -->
+            <div class="bg-amber-50/80 border border-amber-200/80 rounded-2xl p-4 text-xs sm:text-sm text-amber-900 space-y-1.5">
+              <div class="flex items-center gap-2 font-bold text-amber-950">
+                <svg class="w-4 h-4 text-amber-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+                <span>เวลาและตารางการออกตรวจแพทย์เฉพาะทาง</span>
+              </div>
+              <p class="text-xs leading-relaxed text-amber-800">
+                แพทย์เฉพาะทางศัลยกรรมทรวงอกและหัวใจ <strong>ออกตรวจตามวันและตารางนัดหมายของแต่ละท่าน (ไม่ได้ออกตรวจทุกวัน)</strong> เพื่อความสะดวกและได้รับการตรวจอย่างตรงเวลา กรุณาติดต่อสอบถามหรือประสานงานทำนัดหมายล่วงหน้า
+              </p>
+            </div>
+
+            <!-- Clinic Service Types -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2 flex flex-col justify-between">
+                <div>
+                  <span class="font-bold text-slate-900 text-sm block">คลินิกในเวลาราชการ (Regular Clinic)</span>
+                  <p class="text-slate-600 leading-relaxed mt-1">
+                    สำหรับผู้ป่วยนัดหมายตรวจติดตามอาการ ผู้ป่วยที่มีหนังสือส่งตัว และผู้ป่วยส่งต่อจากโรงพยาบาลเครือข่าย
+                  </p>
+                  <div class="text-[11px] text-slate-700 pt-2 space-y-1">
+                    <div><strong>สถานที่:</strong> อาคารจักรีทศมรามาธิบดินทร์ ชั้น 6</div>
+                    <div><strong>นัดหมายตรวจ:</strong> โทร. 02-256-4000</div>
+                  </div>
+                </div>
+                <div class="text-[11px] text-[#A6192E] font-semibold pt-1">
+                  &bull; ตรวจตามตารางนัดหมายแพทย์
+                </div>
+              </div>
+
+              <div class="bg-gradient-to-br from-rose-50/80 to-white p-4 rounded-2xl border border-rose-200 space-y-2.5 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-[#A6192E] text-sm block">คลินิกพิเศษนอกเวลาราชการ</span>
+                    <span class="bg-[#A6192E]/10 text-[#A6192E] text-[10px] font-bold px-2 py-0.5 rounded-full">Special Clinic</span>
+                  </div>
+                  <p class="text-slate-600 leading-relaxed mt-1">
+                    บริการตรวจรักษาโดยคณาจารย์แพทย์ผู้เชี่ยวชาญเฉพาะทาง บริหารงานโดยชมรมคณาจารย์แพทย์ คณะแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย
+                  </p>
+                  <div class="text-[11px] text-slate-700 pt-2 space-y-1">
+                    <div><strong>เวลาทำการ:</strong> จ.-ศ. 16.30-20.00 น. | ส.-อา. 08.00-12.00 น.</div>
+                    <div><strong>Call Center:</strong> <a href="tel:022565193" class="font-bold text-[#A6192E] hover:underline">02-256-5193</a> (นัดล่วงหน้าอย่างน้อย 1 วัน)</div>
+                  </div>
+                </div>
+                <div class="pt-2 border-t border-rose-100">
+                  <a 
+                    href="https://specialclinics.chulalongkornhospital.go.th/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 text-xs font-bold text-[#A6192E] hover:underline"
+                  >
+                    <span>ข้อมูลคลินิกพิเศษและตารางแพทย์</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Patient Preparation Checklist -->
+            <div class="space-y-2 pt-2">
+              <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider">เอกสารและสิ่งที่ต้องเตรียมมาพบแพทย์</h4>
+              <ul class="text-xs text-slate-600 space-y-1.5 list-disc pl-5 leading-relaxed">
+                <li>บัตรประชาชน หรือบัตรที่ทางราชการออกให้</li>
+                <li>หนังสือส่งตัว (ถ้ามี) จากโรงพยาบาลต้นสังกัด</li>
+                <li>ประวัติการรักษาเดิม ผลตรวจเลือด ผลตรวจคลื่นไฟฟ้าหัวใจ (EKG) ผล Echocardiogram</li>
+                <li>แผ่น CD/DVD ฟิล์มเอกซเรย์คอมพิวเตอร์ (CT scan, MRI) หรือผลฉีดสีสวนหัวใจ (CAG)</li>
+                <li>ซองยาเดิม หรือรายการยาที่กำลังรับประทานอยู่ในปัจจุบัน</li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- Quick Action Card -->
+          <div class="lg:col-span-4 space-y-6">
+            <div class="bg-gradient-to-br from-[#A6192E] to-rose-900 text-white rounded-3xl p-6 sm:p-8 shadow-md space-y-4">
+              <div class="inline-flex items-center gap-1.5 bg-white/20 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                <span>Contact & Appointments</span>
+              </div>
+              <h3 class="font-black text-xl text-white">นัดหมายตรวจล่วงหน้า</h3>
+              <p class="text-xs text-rose-100 leading-relaxed">
+                ติดต่อศูนย์ประสานงานนัดตรวจ โรงพยาบาลจุฬาลงกรณ์ สภากาชาดไทย หรือสำนักงานสาขาวิชาศัลยศาสตร์ทรวงอก
+              </p>
+              
+              <div class="space-y-2 pt-2">
+                <a 
+                  href="tel:022564000"
+                  class="w-full text-center bg-white text-[#A6192E] hover:bg-rose-50 font-bold text-xs sm:text-sm py-3 rounded-xl transition shadow-sm block"
+                >
+                  โทรนัดตรวจ OPD: 02-256-4000
+                </a>
+                <a 
+                  href="tel:022565193"
+                  class="w-full text-center bg-white/15 hover:bg-white/25 text-white font-semibold text-xs py-2.5 rounded-xl transition block"
+                >
+                  คลินิกพิเศษนอกเวลา: 02-256-5193
+                </a>
+                <a 
+                  href="tel:022564644"
+                  class="w-full text-center bg-black/25 hover:bg-black/35 text-white font-semibold text-xs py-2.5 rounded-xl transition block"
+                >
+                  สำนักงานสาขาวิชา (อาคาร สก. ชั้น 4): 02-256-4644
+                </a>
+              </div>
+            </div>
+
+            <!-- Location Note Card -->
+            <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-2 text-xs">
+              <h4 class="font-bold text-slate-900">การเดินทาง</h4>
+              <p class="text-slate-600 leading-relaxed">
+                โรงพยาบาลจุฬาลงกรณ์ สามารถเดินทางสะดวกด้วยรถไฟฟ้า BTS สถานีศาลาแดง หรือรถไฟฟ้า MRT สถานีสีลม (ทางออก รพ.จุฬาลงกรณ์)
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- SECTION 2: SURGICAL SUBSPECIALTIES                          -->
+      <!-- ============================================================ -->
+      <section id="subspecialties" class="scroll-mt-24 pt-4 border-t border-slate-200">
+        <div class="space-y-2 mb-8">
+          <div class="inline-flex items-center gap-2 bg-rose-50 border border-rose-200 px-3 py-1 rounded-full text-xs font-bold text-[#A6192E]">
+            <span>Clinical Programs &bull; สาขาความเชี่ยวชาญการผ่าตัด</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+            สาขาความเชี่ยวชาญและหัตถการผ่าตัด
+          </h2>
+          <p class="text-sm text-slate-600 max-w-3xl leading-relaxed">
+            ครอบคลุมทุกมิติของการผ่าตัดรักษาโรคหัวใจ หลอดเลือดแดงใหญ่ ปอด ช่องอก และการปลูกถ่ายหัวใจ
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {programs.map((item) => (
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+              <div>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                  {item.titleTh}
+                </span>
+                <h3 
+                  style={`color: ${theme.primary};`}
+                  class="text-base font-bold mb-3 tracking-tight leading-snug group-hover:underline"
+                >
+                  {item.title}
+                </h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+              <div class="mt-5 pt-3 border-t border-slate-100 flex items-center text-xs font-semibold" style={`color: ${theme.primary};`}>
+                <span>Comprehensive Care &rarr;</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- SECTION 3: INTENSIVE CARE & SURGICAL SUITES                 -->
+      <!-- ============================================================ -->
+      <section id="facilities" class="scroll-mt-24 pt-4 border-t border-slate-200">
+        <div class="bg-slate-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl border border-slate-800 space-y-8">
+          <div class="space-y-3">
+            <span class="text-xs font-bold text-rose-300 uppercase tracking-wider flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#A6192E]"></span>
+              Intensive Care & Advanced Facilities
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              หออภิบาลผู้ป่วยวิกฤตศัลยกรรมหัวใจ (Cardiac Surgery ICU) และห้องผ่าตัด
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
+              พร้อมด้วยเครื่องพยุงการทำงานของหัวใจและปอดขั้นสูง (ECMO, IABP, LVAD) และทีมพยาบาลวิชาชีพเฉพาะทางศัลยกรรมทรวงอกที่ดูแลตลอด 24 ชั่วโมง
+            </p>
+          </div>
+
+          <!-- Photo Gallery Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="space-y-2 group">
+              <div class="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-slate-950">
+                <img 
+                  src="/images/services/cardiac-icu.jpg" 
+                  alt="หออภิบาล Cardiac ICU" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <p class="text-xs font-semibold text-slate-200 text-center">หอผู้ป่วยวิกฤต Cardiac ICU</p>
+            </div>
+
+            <div class="space-y-2 group">
+              <div class="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-slate-950">
+                <img 
+                  src="/images/services/operating-room.jpg" 
+                  alt="ห้องผ่าตัดมาตรฐานสากล" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <p class="text-xs font-semibold text-slate-200 text-center">ห้องผ่าตัดหัวใจขั้นสูง</p>
+            </div>
+
+            <div class="space-y-2 group">
+              <div class="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-slate-950">
+                <img 
+                  src="/images/services/heart-team.jpg" 
+                  alt="ทีมสหสาขาวิชาชีพ" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <p class="text-xs font-semibold text-slate-200 text-center">ทีมศัลยแพทย์ & สหสาขาวิชาชีพ</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+</Layout>
+

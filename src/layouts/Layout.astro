@@ -1,17 +1,17 @@
 ---
 import '../styles/global.css';
-import { siteConfig } from '../config/site';
+import { siteConfig, type NavItem } from '../config/site';
 import { Image } from 'astro:assets';
 import logoImg from '../assets/Logo.png';
 
 const { title = siteConfig?.deptNameEn || "CVT Surgery" } = Astro.props;
 const theme = siteConfig?.theme || { primary: '#A6192E', accent: '#DE5C8E', dark: '#1E293B' };
 const hotline = siteConfig?.hotline || { label: 'Emergency', phone: '', link: '#' };
-const navLinks = siteConfig?.navLinks || [];
+const navLinks: NavItem[] = siteConfig?.navLinks || [];
 ---
 
 <!doctype html>
-<html lang="th">
+<html lang="th" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,55 +21,106 @@ const navLinks = siteConfig?.navLinks || [];
   <body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen antialiased">
     
     <!-- Top Identity Ribbon -->
-    <div style={`background-color: ${theme.primary};`} class="text-white text-xs py-1.5 sm:py-2 px-4 shadow-sm">
+    <div style={`background-color: ${theme.primary};`} class="text-white text-xs py-1.5 sm:py-2 px-4 shadow-sm z-50 relative">
       <div class="max-w-6xl mx-auto flex justify-between items-center">
-        <span class="font-medium tracking-wide hidden sm:inline">
-          {siteConfig?.deptNameEn} | {siteConfig?.hospitalEn}
-        </span>
-        <span class="font-medium tracking-wide sm:hidden text-[10px]">
-          CVT Surgery • KCMH
-        </span>
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2">
+          <span class="font-medium tracking-wide hidden sm:inline">
+            {siteConfig?.deptNameEn} | {siteConfig?.hospitalEn}
+          </span>
+          <span class="font-medium tracking-wide sm:hidden text-[10px]">
+            CVT Surgery &bull; KCMH
+          </span>
+        </div>
+        <div class="flex items-center gap-4 text-xs">
           <a href={hotline.link} class="hover:underline flex items-center gap-1.5 font-semibold text-white">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span class="hidden sm:inline">{hotline.label}: {hotline.phone}</span>
-            <span class="sm:hidden text-[10px]">{hotline.phone}</span>
+            <span class="sm:hidden text-[10px]">ฉุกเฉิน 24 ชม: {hotline.phone}</span>
           </a>
         </div>
       </div>
     </div>
 
     <!-- Main Navigation Bar -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm transition-all duration-300">
       <div class="max-w-6xl mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
         
-        <!-- Brand & Logo Block -->
-        <a href="/" class="flex items-center gap-2 sm:gap-3 shrink-0">
-          <Image src={logoImg} alt="CVT Chula Logo" class="h-9 sm:h-12 w-auto object-contain" loading="eager" />
+        <!-- Brand & Logo Block with generous spacing to menu -->
+        <a href="/" class="flex items-center gap-2 sm:gap-3 shrink-0 group mr-2 lg:mr-4 xl:mr-6">
+          <Image src={logoImg} alt="CVT Chula Logo" class="h-9 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105" loading="eager" />
           <div class="flex flex-col">
-            <span class="font-black text-lg sm:text-xl text-slate-900 tracking-tight leading-tight">
+            <span class="font-black text-lg sm:text-xl text-slate-900 tracking-tight leading-tight whitespace-nowrap">
               CVT <span style={`color: ${theme.primary};`}>CHULA</span>
             </span>
-            <span class="text-[10px] sm:text-xs text-slate-500 font-medium hidden sm:block">
-              {siteConfig?.subTitle || siteConfig?.hospitalEn}
+            <span class="text-[10px] sm:text-xs text-slate-500 font-medium block whitespace-nowrap">
+              {siteConfig?.hospitalEn}
             </span>
           </div>
         </a>
         
-        <!-- Desktop Menu Tabs -->
-        <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-700">
-          {navLinks.map((link) => (
-            <a 
-              href={link.href} 
-              class="hover:opacity-80 transition py-1 border-b-2 border-transparent hover:border-current"
-            >
-              {link.label}
-            </a>
-          ))}
+        <!-- Desktop Menu with Modern Dropdowns -->
+        <nav class="hidden lg:flex items-center gap-1 xl:gap-2.5 text-xs xl:text-sm font-semibold text-slate-700 ml-auto shrink-0">
+          {navLinks.map((item) => {
+            const hasChildren = item.children && item.children.length > 0;
+            return (
+              <div class="relative group/nav py-4">
+                {hasChildren ? (
+                  <button 
+                    type="button" 
+                    class="flex items-center gap-1 px-2 xl:px-3 py-1.5 xl:py-2 rounded-xl text-slate-700 hover:text-[#A6192E] hover:bg-slate-50 transition group-hover/nav:text-[#A6192E] font-medium text-xs xl:text-sm whitespace-nowrap"
+                  >
+                    <span>{item.label}</span>
+                    <svg class="w-3.5 h-3.5 text-slate-400 group-hover/nav:text-[#A6192E] group-hover/nav:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                ) : (
+                  <a 
+                    href={item.href} 
+                    class="px-2 xl:px-3 py-1.5 xl:py-2 rounded-xl text-slate-700 hover:text-[#A6192E] hover:bg-slate-50 transition font-medium text-xs xl:text-sm whitespace-nowrap"
+                  >
+                    {item.label}
+                  </a>
+                )}
+
+                {hasChildren && (
+                  <div class="absolute top-[80%] left-0 pt-2 opacity-0 pointer-events-none group-hover/nav:opacity-100 group-hover/nav:pointer-events-auto transition-all duration-200 ease-out transform -translate-y-1 group-hover/nav:translate-y-0 z-50">
+                    <div class="bg-white rounded-2xl border border-slate-200/90 shadow-xl p-2.5 min-w-[300px] max-w-[340px] space-y-1">
+                      {item.children?.map((sub) => (
+                        <a 
+                          href={sub.href}
+                          target={sub.external ? "_blank" : undefined}
+                          rel={sub.external ? "noopener noreferrer" : undefined}
+                          class="group/item block p-2.5 rounded-xl hover:bg-rose-50/60 transition"
+                        >
+                          <div class="flex items-center justify-between gap-2">
+                            <span class="text-xs font-bold text-slate-800 group-hover/item:text-[#A6192E] transition">
+                              {sub.label}
+                            </span>
+                            {sub.badge && (
+                              <span class="bg-[#A6192E]/10 text-[#A6192E] text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                                {sub.badge}
+                              </span>
+                            )}
+                          </div>
+                          {sub.description && (
+                            <p class="text-[11px] text-slate-500 mt-0.5 leading-snug line-clamp-1 group-hover/item:text-slate-600">
+                              {sub.description}
+                            </p>
+                          )}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+
           <a 
-            href="#contact" 
+            href="/#contact" 
             style={`background-color: ${theme.primary};`}
-            class="text-white px-4 py-2 rounded-lg text-sm font-medium transition hover:opacity-90 shadow-sm"
+            class="text-white px-3 xl:px-4 py-1.5 xl:py-2 rounded-xl text-xs xl:text-sm font-semibold transition hover:opacity-95 shadow-sm shadow-[#A6192E]/25 ml-1.5 xl:ml-2.5 whitespace-nowrap shrink-0"
           >
             Contact
           </a>
@@ -79,7 +130,7 @@ const navLinks = siteConfig?.navLinks || [];
         <button 
           id="mobile-menu-btn" 
           type="button" 
-          class="md:hidden flex flex-col items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-100 transition focus:outline-none"
+          class="lg:hidden flex flex-col items-center justify-center w-10 h-10 rounded-xl hover:bg-slate-100 transition focus:outline-none"
           aria-label="Toggle navigation menu"
           aria-expanded="false"
         >
@@ -90,27 +141,70 @@ const navLinks = siteConfig?.navLinks || [];
         
       </div>
 
-      <!-- Mobile Dropdown Menu -->
+      <!-- Mobile Dropdown Menu with Accordions -->
       <nav 
         id="mobile-menu" 
-        class="md:hidden hidden border-t border-slate-100 bg-white shadow-lg"
+        class="lg:hidden hidden border-t border-slate-100 bg-white max-h-[80vh] overflow-y-auto shadow-xl"
       >
-        <div class="max-w-6xl mx-auto px-4 py-4 space-y-1">
-          {navLinks.map((link) => (
+        <div class="max-w-6xl mx-auto px-4 py-4 space-y-2">
+          {navLinks.map((item, index) => {
+            const hasChildren = item.children && item.children.length > 0;
+            return (
+              <div class="border-b border-slate-100 last:border-none pb-2 last:pb-0">
+                {hasChildren ? (
+                  <div>
+                    <button 
+                      type="button"
+                      class="mobile-accordion-btn w-full flex items-center justify-between py-2 text-sm font-bold text-slate-800 hover:text-[#A6192E]"
+                      data-target={`sub-${index}`}
+                    >
+                      <span>{item.label}</span>
+                      <svg class="mobile-chevron w-4 h-4 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    <div id={`sub-${index}`} class="mobile-submenu hidden pl-3 pr-1 py-1 space-y-1.5">
+                      {item.children?.map((sub) => (
+                        <a 
+                          href={sub.href}
+                          target={sub.external ? "_blank" : undefined}
+                          rel={sub.external ? "noopener noreferrer" : undefined}
+                          class="mobile-nav-link block p-2 rounded-lg bg-slate-50 hover:bg-rose-50 transition"
+                        >
+                          <div class="flex items-center justify-between">
+                            <span class="text-xs font-semibold text-slate-800">{sub.label}</span>
+                            {sub.badge && (
+                              <span class="bg-[#A6192E]/10 text-[#A6192E] text-[9px] font-bold px-1.5 py-0.5 rounded-full">
+                                {sub.badge}
+                              </span>
+                            )}
+                          </div>
+                          {sub.description && (
+                            <p class="text-[10px] text-slate-500 mt-0.5 leading-snug">{sub.description}</p>
+                          )}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <a 
+                    href={item.href} 
+                    class="mobile-nav-link block py-2 text-sm font-bold text-slate-800 hover:text-[#A6192E]"
+                  >
+                    {item.label}
+                  </a>
+                )}
+              </div>
+            );
+          })}
+
+          <div class="pt-2 mt-2">
             <a 
-              href={link.href} 
-              class="mobile-nav-link block px-4 py-3 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#A6192E] transition"
-            >
-              {link.label}
-            </a>
-          ))}
-          <div class="pt-2 border-t border-slate-100 mt-2">
-            <a 
-              href="#contact" 
+              href="/#contact" 
               style={`background-color: ${theme.primary};`}
-              class="mobile-nav-link block text-center text-white px-4 py-3 rounded-lg text-sm font-semibold transition hover:opacity-90 shadow-sm"
+              class="mobile-nav-link block text-center text-white px-4 py-2.5 rounded-xl text-xs font-semibold transition hover:opacity-90 shadow-sm"
             >
-              Contact
+              ติดต่อเรา (Contact Us)
             </a>
           </div>
         </div>
@@ -122,16 +216,88 @@ const navLinks = siteConfig?.navLinks || [];
       <slot />
     </main>
 
-    <!-- Footer -->
-    <footer style={`background-color: ${theme.dark};`} class="text-slate-400 py-8 sm:py-10 text-xs border-t border-slate-800">
-      <div class="max-w-6xl mx-auto px-4 text-center space-y-2">
-        <p class="text-white font-medium text-sm sm:text-base">{siteConfig?.deptNameTh} {siteConfig?.hospitalTh}</p>
-        <p class="text-[11px] sm:text-xs">{siteConfig?.deptNameEn} &bull; {siteConfig?.hospitalEn}</p>
-        <p class="pt-4 text-slate-500">&copy; {new Date().getFullYear()} All rights reserved.</p>
+    <!-- Modern Institutional Footer -->
+    <footer style={`background-color: ${theme.dark};`} class="text-slate-300 py-12 text-xs border-t border-slate-800">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-800">
+          
+          <!-- Column 1: Identity -->
+          <div class="space-y-3 md:col-span-1">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-[#A6192E]"></span>
+              <span class="font-black text-white text-base tracking-tight">CVT CHULA</span>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              สาขาวิชาศัลยศาสตร์ทรวงอก ภาควิชาศัลยศาสตร์<br />
+              คณะแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย และ<br />
+              โรงพยาบาลจุฬาลงกรณ์ สภากาชาดไทย
+            </p>
+            <div class="pt-2 flex flex-wrap gap-1.5">
+              <span class="inline-block bg-white/5 border border-white/10 rounded-lg px-2 py-0.5 text-[11px] text-rose-300 font-medium">
+                อาคารจักรีทศมรามาธิบดินทร์ ชั้น 6 (OPD)
+              </span>
+              <span class="inline-block bg-white/5 border border-white/10 rounded-lg px-2 py-0.5 text-[11px] text-slate-300 font-medium">
+                อาคาร สก. ชั้น 4 (Office)
+              </span>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="space-y-2">
+            <h4 class="font-bold text-white text-xs uppercase tracking-wider">เมนูหลัก</h4>
+            <ul class="space-y-1.5 text-slate-400">
+              <li><a href="/about" class="hover:text-white transition">เกี่ยวกับเรา (About Us)</a></li>
+              <li><a href="/about#centers" class="hover:text-white transition">ศูนย์ความเป็นเลิศทางการแพทย์</a></li>
+              <li><a href="/services" class="hover:text-white transition">การบริการและคลินิกผู้ป่วยนอก</a></li>
+              <li><a href="https://specialclinics.chulalongkornhospital.go.th/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition text-rose-300">คลินิกพิเศษนอกเวลาราชการ &rarr;</a></li>
+              <li><a href="/faculty" class="hover:text-white transition">คณาจารย์ศัลยแพทย์</a></li>
+              <li><a href="/fellowship" class="hover:text-white transition">ทำเนียบแพทย์ประจำบ้าน</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Education & Research -->
+          <div class="space-y-2">
+            <h4 class="font-bold text-white text-xs uppercase tracking-wider">วิชาการและการศึกษา</h4>
+            <ul class="space-y-1.5 text-slate-400">
+              <li><a href="/research" class="hover:text-white transition">งานวิจัยและการประชุมสากล</a></li>
+              <li><a href="/documents/curriculum-mkw2.pdf" target="_blank" class="hover:text-white transition">หลักสูตร มคว.2 (Curriculum)</a></li>
+              <li><a href="/documents/resident-manual-2568.pdf" target="_blank" class="hover:text-white transition">คู่มือแพทย์ประจำบ้าน 2568</a></li>
+              <li><a href="/#medumore" class="hover:text-white transition">MDCU MedUMore E-Learning</a></li>
+              <li><a href="/KCMH1" class="hover:text-white transition">วารสาร ฬ.จุฬา (KCMH Journal)</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Contact & Emergency -->
+          <div class="space-y-2">
+            <h4 class="font-bold text-white text-xs uppercase tracking-wider">ติดต่อและนัดตรวจ</h4>
+            <p class="text-slate-400 leading-relaxed text-[11px]">
+              OPD: อาคารจักรีทศมรามาธิบดินทร์ ชั้น 6<br />
+              สำนักงาน: อาคาร สก. ชั้น 4 รพ.จุฬาลงกรณ์
+            </p>
+            <p class="text-slate-400 text-[11px] space-y-0.5">
+              <span>สำนักงาน: <a href="tel:022564644" class="hover:text-white text-slate-300">02-256-4644</a></span><br />
+              <span>นัดตรวจ OPD: <a href="tel:022564000" class="hover:text-white text-slate-300">02-256-4000</a></span><br />
+              <span>คลินิกพิเศษนอกเวลา: <a href="tel:022565193" class="hover:text-white text-slate-300">02-256-5193</a></span><br />
+              <span>Email: <a href="mailto:cvt.chula@gmail.com" class="hover:text-white">cvt.chula@gmail.com</a></span>
+            </p>
+            <div class="pt-2">
+              <a href="tel:022564000" class="inline-flex items-center gap-1.5 bg-[#A6192E] text-white px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-rose-700 transition shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                <span>ฉุกเฉิน 24 ชม: 02-256-4000</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-slate-500 text-[11px] gap-2">
+          <p>&copy; {new Date().getFullYear()} Division of Cardiovascular & Thoracic Surgery, KCMH. All rights reserved.</p>
+          <p>คณะแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย</p>
+        </div>
       </div>
     </footer>
 
-    <!-- Mobile Menu Toggle Script -->
+    <!-- Mobile Menu Toggle & Accordion Script -->
     <script is:inline>
       (() => {
         const btn = document.getElementById('mobile-menu-btn');
@@ -150,20 +316,37 @@ const navLinks = siteConfig?.navLinks || [];
 
           if (isOpen) {
             menu.classList.remove('hidden');
-            // Morph hamburger to X
             if (top) { top.style.transform = 'translateY(8px) rotate(45deg)'; }
             if (mid) { mid.style.opacity = '0'; }
             if (bot) { bot.style.transform = 'translateY(-8px) rotate(-45deg)'; }
           } else {
             menu.classList.add('hidden');
-            // Restore hamburger
             if (top) { top.style.transform = ''; }
             if (mid) { mid.style.opacity = '1'; }
             if (bot) { bot.style.transform = ''; }
           }
         });
 
-        // Close menu when a link is tapped
+        // Mobile Accordion Toggle
+        const accordionBtns = document.querySelectorAll('.mobile-accordion-btn');
+        accordionBtns.forEach(accBtn => {
+          accBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = accBtn.getAttribute('data-target');
+            const targetEl = document.getElementById(targetId);
+            const chevron = accBtn.querySelector('.mobile-chevron');
+
+            if (targetEl) {
+              const isHidden = targetEl.classList.contains('hidden');
+              targetEl.classList.toggle('hidden');
+              if (chevron) {
+                chevron.style.transform = isHidden ? 'rotate(180deg)' : '';
+              }
+            }
+          });
+        });
+
+        // Close menu on navigation click
         const links = menu.querySelectorAll('.mobile-nav-link');
         links.forEach(link => {
           link.addEventListener('click', () => {
@@ -179,4 +362,3 @@ const navLinks = siteConfig?.navLinks || [];
     </script>
   </body>
 </html>
-

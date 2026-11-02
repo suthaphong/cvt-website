@@ -1,0 +1,254 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config/site';
+import { departmentMilestones, excellenceCenters } from '../data/department';
+
+const { theme } = siteConfig;
+---
+
+<Layout title={`About Us & History | ${siteConfig.deptNameEn}`}>
+  <div class="bg-slate-50 min-h-screen pb-20">
+    
+    <!-- Institutional Page Header Banner -->
+    <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-white border-b border-slate-800">
+      <div class="max-w-6xl mx-auto px-4 py-12 md:py-16">
+        
+        <!-- Breadcrumb & Badges -->
+        <div class="flex flex-wrap items-center gap-2.5 text-xs text-slate-400 mb-4">
+          <a href="/" class="hover:text-white transition">Home</a>
+          <span>&rsaquo;</span>
+          <span class="text-white font-medium">About Us</span>
+          <span class="text-slate-600">&bull;</span>
+          <span class="bg-[#A6192E] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+            ประวัติและเกียรติประวัติ
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
+          ประวัติและความเป็นมา
+        </h1>
+        <p class="text-base sm:text-lg text-rose-300 font-semibold mt-1">
+          70+ Years of Pioneering Cardiovascular & Thoracic Surgery in Thailand
+        </p>
+
+        <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-3xl leading-relaxed">
+          หน่วยศัลยศาสตร์ทรวงอกและหัวใจ ภาควิชาศัลยศาสตร์ คณะแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย 
+          และโรงพยาบาลจุฬาลงกรณ์ สภากาชาดไทย สถาบันผู้บุกเบิกและสร้างประวัติศาสตร์หน้าสำคัญในการผ่าตัดหัวใจและทรวงอกของประเทศไทยอย่างต่อเนื่องนับตั้งแต่ พ.ศ. 2496
+        </p>
+
+      </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="max-w-6xl mx-auto px-4 pt-10 space-y-16">
+      
+      <!-- Vision & Mission Overview Card -->
+      <div id="mission" class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl border border-slate-700 scroll-mt-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-4">
+            <span class="text-xs font-bold text-rose-300 uppercase tracking-widest flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#A6192E]"></span>
+              Vision & Institutional Mission
+            </span>
+            <h2 class="text-xl sm:text-2xl font-black text-white leading-snug">
+              ศูนย์กลางความเป็นเลิศด้านการบริการรักษาพยาบาล วิชาการ การฝึกอบรม และวิจัย ในระดับภูมิภาคเอเชียอาคเนย์
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              หน่วยศัลยศาสตร์ทรวงอก รพ.จุฬาลงกรณ์ มุ่งมั่นที่จะผลิตศัลยแพทย์ที่มีความรู้ ความชำนาญตามมาตรฐานสากล 
+              ทำให้ศัลยแพทย์ที่ผ่านการฝึกอบรมมีมาตรฐานและเกียรติภูมิเป็นที่ยอมรับของศัลยแพทย์นานาประเทศ 
+              สามารถไปศึกษาต่อและปฏิบัติงานในต่างประเทศได้อย่างเหมาะสม ทั้งยังเป็นประโยชน์ต่อการพัฒนาศัลยศาสตร์ของประเทศไทย
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-700/80">
+              <div class="bg-white/5 rounded-xl p-3 border border-white/10">
+                <div class="text-xl font-black text-rose-300">2496</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">กำเนิดหน่วยผ่าตัดหัวใจแห่งแรกในไทย</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3 border border-white/10">
+                <div class="text-xl font-black text-rose-300">2530</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">ปลูกถ่ายหัวใจสำเร็จแห่งแรกในอาเซียน</div>
+              </div>
+              <div class="bg-white/5 rounded-xl p-3 border border-white/10 col-span-2 sm:col-span-1">
+                <div class="text-xl font-black text-rose-300">40+ ปี</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">ฝึกอบรมแพทย์ประจำบ้านศัลยศาสตร์ทรวงอก</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="lg:col-span-5 relative">
+            <div class="relative rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-slate-950 group">
+              <img 
+                src="/images/history/historical-team.jpg" 
+                alt="คณะศัลยแพทย์และทีมงานบุกเบิกการผ่าตัดหัวใจ รพ.จุฬาลงกรณ์" 
+                class="w-full h-64 sm:h-72 object-cover object-center group-hover:scale-105 transition duration-700 opacity-90"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+              <div class="absolute bottom-3 left-3 right-3 p-3 bg-black/60 backdrop-blur-md rounded-xl border border-white/10 text-white">
+                <p class="text-[11px] font-medium leading-snug">
+                  คณะศัลยแพทย์ผู้บุกเบิกการผ่าตัดหัวใจและเครื่องปอด-หัวใจเทียม โรงพยาบาลจุฬาลงกรณ์ สภากาชาดไทย
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Historical Narrative Section -->
+      <div id="history" class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm space-y-6 scroll-mt-24">
+        <div class="space-y-2 border-b border-slate-100 pb-4">
+          <span class="text-xs font-bold text-[#A6192E] uppercase tracking-wider">ประวัติการบุกเบิกและพัฒนาการ</span>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+            รากฐานแห่งการผ่าตัดหัวใจและทรวงอกของประเทศไทย
+          </h2>
+        </div>
+
+        <div class="prose prose-slate max-w-none text-xs sm:text-sm leading-relaxed space-y-4 text-slate-600">
+          <p>
+            หน่วยศัลยศาสตร์ทรวงอกและหัวใจ ภาควิชาศัลยศาสตร์ เป็นหน่วยงานที่มีชื่อเสียงในการผ่าตัดหัวใจและเป็นสถาบันที่บุกเบิกหลากหลายวิทยาการในการผ่าตัดหัวใจ รวมถึงเป็นสถาบันแรกในประเทศไทยที่ทำการผ่าตัดหัวใจสำเร็จ คือการผ่าตัดผูกเย็บ <strong>Patent Ductus Arteriosus (PDA) ในปี พ.ศ. 2496 โดยศาสตราจารย์นายแพทย์ สมาน มันตาภรณ์</strong>
+          </p>
+          <p>
+            ในปีเดียวกันนั้น ศาสตราจารย์นายแพทย์ สมาน มันตาภรณ์ ได้ตั้งหน่วยหัวใจ ปอด แยกออกมาจากศัลยกรรมทั่วไป และเพื่อให้การตรวจวินิจฉัยโรคหัวใจเป็นไปได้อย่างถูกต้อง ท่านจึงจัดตั้งห้องตรวจสวนหัวใจ (Cardiac Catheterization Lab) เป็นแห่งแรกของประเทศไทย และในปี พ.ศ. 2497 ได้มีการผ่าตัดลิ้นหัวใจครั้งแรกในประเทศไทย ที่โรงพยาบาลจุฬาลงกรณ์ เป็นการผ่าตัด <strong>Closed Mitral Valvulotomy</strong>
+          </p>
+          <p>
+            การผ่าตัดหัวใจชนิดเปิดโดยใช้เครื่องหัวใจและปอดเทียม (Cardiopulmonary Bypass) สำเร็จครั้งแรกในประเทศไทยเกิดขึ้นที่โรงพยาบาลจุฬาลงกรณ์ในปี <strong>พ.ศ. 2502</strong> เป็นการผ่าตัด Valvular Pulmonary Stenosis โดยศาสตราจารย์นายแพทย์ สมาน มันตาภรณ์ ซึ่งผู้ปฏิบัติควบคุมเครื่องปอด หัวใจ (Perfusionist) รุ่นแรกคือศัลยแพทย์ผู้ช่วย ได้แก่ นายแพทย์ชิน บูรณธรรม, นายแพทย์ชวลิต อ่องจริต และนายแพทย์โยธิน คุโรวาท
+          </p>
+          <p>
+            ใน พ.ศ. 2520 ได้มีการประดิษฐ์ลิ้นหัวใจเทียมชีวภาพขึ้นใช้เองครั้งแรกในประเทศไทย โดย <strong>ศาสตราจารย์นายแพทย์ ชวลิต อ่องจริต</strong> โดยใช้เยื่อหุ้มสมอง Dura Mater ถนอมด้วย Glycerine เข้มข้น และต่อมาในวันที่ <strong>18 ธันวาคม พ.ศ. 2530</strong> คณะแพทย์นำโดย ศาสตราจารย์นายแพทย์ ชวลิต อ่องจริต ได้ทำการผ่าตัดเปลี่ยนหัวใจ (Heart Transplantation) สำเร็จเป็นครั้งแรกในประเทศไทยและในภูมิภาคเอเชียตะวันออกเฉียงใต้ ซึ่งเป็นรากฐานสำคัญในการวางระเบียบวิธีการทางนิติศาสตร์และการรับบริจาคอวัยวะของประเทศไทย
+          </p>
+        </div>
+      </div>
+
+      <!-- Timeline of Milestones -->
+      <div class="space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+              <svg class="w-5 h-5 text-[#A6192E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>เส้นทางประวัติศาสตร์และหลักไมล์สำคัญ (Milestones)</span>
+            </h3>
+            <p class="text-xs text-slate-500 mt-1">เหตุการณ์สำคัญที่สร้างชื่อเสียงและพัฒนาการแพทย์ไทย</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {departmentMilestones.map((item) => (
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-md hover:border-[#A6192E]/40 transition overflow-hidden flex flex-col justify-between group">
+              {item.image && (
+                <div class="relative h-44 overflow-hidden bg-slate-100">
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                    loading="lazy"
+                  />
+                  <div class="absolute top-3 left-3">
+                    <span class="bg-[#A6192E] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-sm">
+                      {item.tag}
+                    </span>
+                  </div>
+                </div>
+              )}
+              <div class="p-6 flex-grow flex flex-col justify-between space-y-3">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-black text-[#A6192E] bg-rose-50 px-2.5 py-1 rounded-lg">
+                      พ.ศ. {item.yearBe} ({item.yearAd})
+                    </span>
+                    <span class="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">
+                      {item.tag}
+                    </span>
+                  </div>
+                  <h4 class="font-bold text-slate-900 group-hover:text-[#A6192E] transition text-sm sm:text-base leading-snug">
+                    {item.title}
+                  </h4>
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+                <div class="pt-3 border-t border-slate-100 text-[11px] font-semibold text-slate-500 flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5 text-[#A6192E]" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                  </svg>
+                  <span>{item.pioneer}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Excellence Centers Highlight -->
+      <div id="centers" class="space-y-6 pt-4 border-t border-slate-200 scroll-mt-24">
+        <div>
+          <h3 class="text-xl font-bold text-slate-900">ศูนย์ความเป็นเลิศทางการแพทย์</h3>
+          <p class="text-xs text-slate-500 mt-1">บูรณาการบริการและการดูแลรักษาขั้นสูง โรงพยาบาลจุฬาลงกรณ์ สภากาชาดไทย</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {excellenceCenters.map((center) => (
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+              <div class="relative aspect-[16/9] overflow-hidden bg-slate-900">
+                <img 
+                  src={center.image} 
+                  alt={center.nameTh} 
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                
+                {center.logo && (
+                  <div class="absolute top-4 left-4 bg-white/95 p-2 rounded-2xl shadow-md backdrop-blur-sm border border-slate-100">
+                    <img src={center.logo} alt="Logo" class="h-10 w-auto object-contain" />
+                  </div>
+                )}
+
+                <div class="absolute bottom-4 left-4 right-4">
+                  <span class="text-[10px] font-bold text-emerald-300 uppercase tracking-wider bg-emerald-950/60 backdrop-blur-sm px-2.5 py-1 rounded-full border border-emerald-500/30">
+                    Chula Excellence Center
+                  </span>
+                  <h4 class="text-lg font-black text-white mt-2 leading-snug drop-shadow-md">
+                    {center.nameTh}
+                  </h4>
+                  <p class="text-xs text-slate-300 font-medium">{center.nameEn}</p>
+                </div>
+              </div>
+
+              <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {center.description}
+                </p>
+
+                <div class="space-y-3 pt-2">
+                  <div class="flex flex-wrap gap-2">
+                    {center.highlights.map((h) => (
+                      <span class="text-[11px] font-medium bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg">
+                        &check; {h}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <a 
+                      href={center.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-xs font-bold text-[#A6192E] hover:underline inline-flex items-center gap-1.5"
+                    >
+                      <span>เข้าสู่เว็บไซต์ทางการศูนย์ฯ &rarr;</span>
+                    </a>
+                    <span class="text-[10px] text-slate-400">kcmh.chulalongkornhospital.go.th</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</Layout>
+
